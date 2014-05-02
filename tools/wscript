@@ -1,0 +1,7 @@
+
+def build(bld):
+	bld(features = 'cxx cxxstlib',
+		includes = ['gtest-1.7.0/fused-src'],
+		export_includes = ['gtest-1.7.0/fused-src'],
+		source = bld.path.ant_glob('gtest-1.7.0/fused-src/gtest/*.cc'),
+		target = 'gtest')
