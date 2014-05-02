@@ -19,5 +19,6 @@ def configure(conf):
 
 def build(bld):
 	bld.recurse('tools')
+	bld.recurse('challenges/3n+1Problem')
 
 
