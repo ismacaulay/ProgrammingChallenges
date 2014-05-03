@@ -48,4 +48,5 @@ TEST(ChallengeTests, testMaxCyclesForRangeReturnsCorrectValue)
    EXPECT_EQ(maxCyclesForRange(201, 210), 89);
    EXPECT_EQ(maxCyclesForRange(210, 201), 89);
    EXPECT_EQ(maxCyclesForRange(1000, 900), 174);
+   EXPECT_EQ(maxCyclesForRange(9, 9), 20);
 }

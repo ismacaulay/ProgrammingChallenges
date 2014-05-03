@@ -30,7 +30,7 @@ int maxCyclesForRange(int start, int end)
    }
 
    int maxCycles = 1;
-   while(lowest < highest)
+   while(lowest <= highest)
    {
       int numCycles = numberOfCycles(lowest);
       maxCycles = maxNumber(maxCycles, numCycles);
