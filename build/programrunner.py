@@ -20,6 +20,11 @@ def create_test_task(self):
    self.default_install_path = None
    self.create_task('run_test', self.link_task.outputs)
 
+#######################################################################
+#
+# Run executable
+#
+#######################################################################
 import threading
 testlock = threading.Lock()
 class run_test(Task.Task):
@@ -38,6 +43,7 @@ class run_test(Task.Task):
         
       filename = self.inputs[0].abspath()
       self.ut_exec = getattr(self, 'ut_exec', [filename])
+
       if getattr(self.generator, 'ut_fun', None):
          self.generator.ut_fun(self)
 
@@ -67,11 +73,18 @@ class run_test(Task.Task):
          self.generator.bld.all_test_paths = paths
 
       cwd = getattr(self.generator, 'ut_cwd', '') or self.inputs[0].parent.abspath()
+
+      myinput = None;
+      if Options.options.submission:
+         myinput = open(self.inputs[0].parent.abspath() + '/input.txt')
+
       proc = Utils.subprocess.Popen(self.ut_exec,
                                     cwd=cwd,
                                     env=paths,
                                     stderr=subprocess.STDOUT,
-                                    stdout=Utils.subprocess.PIPE)
+                                    stdout=Utils.subprocess.PIPE,
+                                    stdin=myinput)
+
       (stdout, stderr) = proc.communicate()
 
       testTuple = (filename, proc.returncode, stdout, stderr)
@@ -93,6 +106,12 @@ class run_test(Task.Task):
       finally:
          testlock.release()
 
+
+#######################################################################
+#
+# Summary
+#
+#######################################################################
 def summary(bld):
    programOutput = getattr(bld, 'utest_results', [])
 
@@ -105,21 +124,8 @@ def summary(bld):
       if 'gtest' in testOutput[0]:
          printUnitTests(testOutput[1:])
       else:
-         printSubmissionOutput(testOutput)
-      # testFailed = False
-
-      # for line in testOutput:
-      #    if 'PASS' in line:
-      #       Logs.pprint('GREEN', line)
-      #       testFailed = False
-      #    elif 'FAIL' in line:
-      #       Logs.pprint('RED', line)
-      #       testFailed = True
-      #    elif testFailed:
-      #       Logs.pprint('YELLOW', line)
-      #    else:
-      #       Logs.pprint('CYAN', line)
-      #       testFailed = False
+         expectedOutputFile = f.rsplit('/', 1)[0] + '/output.txt';
+         printSubmissionOutput(testOutput, expectedOutputFile)
 
 def printUnitTests(output):
    testFailed = False
@@ -136,9 +142,35 @@ def printUnitTests(output):
          Logs.pprint('CYAN', line)
          testFailed = False
 
-def printSubmissionOutput(output):
-   for line in output:
-      Logs.pprint('CYAN', line)
+def printSubmissionOutput(output, outputFilePath):
+   outputFileOpen = True
+   outputFile = None
+   verified = True
+   try:
+      outputFile = open(outputFilePath)
+      for line in output:
+         expectedOutput = outputFile.readline()
+         expectedOutput = expectedOutput[:len(expectedOutput)-1]
+         if line == expectedOutput:
+            Logs.pprint('CYAN', line)
+         else:
+            Logs.pprint('RED', '[ERROR] Mismatched output line')
+            Logs.pprint('RED', 'Actual: ' + line)
+            Logs.pprint('RED', 'Expected: ' + expectedOutput)
+            verified = False
+
+      if verified:
+         Logs.pprint('GREEN', '[Verified] The output looks like is matches the expected output')
+      else:
+         Logs.pprint('RED', '[FAIL] The output does not match the expected output')
+
+   except:
+      for line in output:
+         Logs.pprint('CYAN', line)
+      
+      Logs.pprint('YELLOW', '[Warning] Unable to verify output with expected output due to missing output.txt file.')
+
+
 
 
 
