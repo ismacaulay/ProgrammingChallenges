@@ -12,4 +12,5 @@ Todo
 Todo
 
 ###Solved Problems
-3n+1 Problem
+100 - 3n+1 Problem
+10189 - Minesweeper
