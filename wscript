@@ -18,7 +18,8 @@ def configure(conf):
                         '-O2']
 
 def build(bld):
-	bld.recurse('tools')
-	bld.recurse('challenges/3n+1Problem')
+   bld.recurse('tools')
+   for wscript in bld.path.ant_glob('**/wscript'):
+      bld.recurse(wscript.find_node('..').abspath())
 
 

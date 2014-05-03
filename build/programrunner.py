@@ -43,7 +43,7 @@ class run_test(Task.Task):
         
       filename = self.inputs[0].abspath()
       self.ut_exec = getattr(self, 'ut_exec', [filename])
-
+      print "[PATH]: "+ self.inputs[0].abspath().replace(".build/", "").rsplit('/', 1)[0]
       if getattr(self.generator, 'ut_fun', None):
          self.generator.ut_fun(self)
 
@@ -76,7 +76,10 @@ class run_test(Task.Task):
 
       myinput = None;
       if Options.options.submission:
-         myinput = open(self.inputs[0].parent.abspath() + '/input.txt')
+         try:
+            myinput = open(self.inputs[0].abspath().replace(".build/", "").rsplit('/', 1)[0] + '/input.txt')
+         except:
+            myinput = None
 
       proc = Utils.subprocess.Popen(self.ut_exec,
                                     cwd=cwd,
@@ -124,8 +127,9 @@ def summary(bld):
       if 'gtest' in testOutput[0]:
          printUnitTests(testOutput[1:])
       else:
-         expectedOutputFile = f.rsplit('/', 1)[0] + '/output.txt';
-         printSubmissionOutput(testOutput, expectedOutputFile)
+         problem = f.rsplit('/', 1)[1]
+         expectedOutputFile = f.replace(".build/", "").rsplit('/', 1)[0] + '/output.txt';
+         printSubmissionOutput(problem, testOutput, expectedOutputFile)
 
 def printUnitTests(output):
    testFailed = False
@@ -142,7 +146,8 @@ def printUnitTests(output):
          Logs.pprint('CYAN', line)
          testFailed = False
 
-def printSubmissionOutput(output, outputFilePath):
+def printSubmissionOutput(problem, output, outputFilePath):
+   Logs.pprint('CYAN', '[Start Problem] ' + problem)
    outputFileOpen = True
    outputFile = None
    verified = True
@@ -160,15 +165,19 @@ def printSubmissionOutput(output, outputFilePath):
             verified = False
 
       if verified:
-         Logs.pprint('GREEN', '[Verified] The output looks like is matches the expected output')
+         Logs.pprint('GREEN', '[Verified] The output looks like is matches the expected output\n')
       else:
-         Logs.pprint('RED', '[FAIL] The output does not match the expected output')
+         Logs.pprint('RED', '[FAIL] The output does not match the expected output\n')
 
    except:
       for line in output:
          Logs.pprint('CYAN', line)
       
-      Logs.pprint('YELLOW', '[Warning] Unable to verify output with expected output due to missing output.txt file.')
+      Logs.pprint('YELLOW', '[Warning] Unable to verify output with expected output due to missing output.txt file.\n')
+
+   Logs.pprint('CYAN', '[End Problem] ' + problem + '\n')
+
+
 
 
 
