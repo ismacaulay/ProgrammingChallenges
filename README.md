@@ -15,4 +15,5 @@ Todo
 <ul>
 <li>100 - 3n+1 Problem</li>
 <li>10189 - Minesweeper</li>
+<li>10038 - Jolly Jumpers</li>
 </ul>
