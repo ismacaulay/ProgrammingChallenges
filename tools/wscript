@@ -15,5 +15,3 @@ def build(bld):
              target = 'gtest',
              name = 'gtest')
 
-   bld(rule='cp ${SRC} ${TGT}', source='libgtest.so', target='../lib/libgtest.so', color='PINK', Shell=True)
-
