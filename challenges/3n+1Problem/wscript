@@ -5,8 +5,11 @@ def build(bld):
    if bld.options.submission:
       defines = 'ONLINE_JUDGE'
 
+   # ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
+   # bld.read_shlib('pthread', paths = ext_paths)
    bld.program(features = 'cxx programrunner',
 				   use = 'gtest',
+               uselib ='pthread',
 				   include = ['.'],
 				   source = bld.path.ant_glob('*.cxx'),
 				   defines = defines,

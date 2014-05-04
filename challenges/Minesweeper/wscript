@@ -7,6 +7,7 @@ def build(bld):
 
    bld.program(features = 'cxx programrunner',
 				   use = 'gtest',
+               uselib = 'pthread',
 				   include = ['.'],
 				   source = bld.path.ant_glob('*.cxx'),
 				   defines = defines,

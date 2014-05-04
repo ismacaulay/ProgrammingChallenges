@@ -1,7 +1,19 @@
 
+top='.'
+out='.build'
+
+def options(opt):
+   opt.load('compiler_cxx')
+
+def configure(conf):
+   conf.load('compiler_cxx')
+
 def build(bld):
-	bld(features = 'cxx cxxstlib',
-		includes = ['gtest-1.7.0/fused-src'],
-		export_includes = ['gtest-1.7.0/fused-src'],
-		source = bld.path.ant_glob('gtest-1.7.0/fused-src/gtest/*.cc'),
-		target = 'gtest')
+   bld.shlib(source = bld.path.ant_glob('gtest/fused-src/gtest/*.cc'),
+             includes = ['gtest/fused-src'],
+             export_includes = ['gtest/fused-src'],
+             target = 'gtest',
+             name = 'gtest')
+
+   bld(rule='cp ${SRC} ${TGT}', source='libgtest.so', target='../lib/libgtest.so', color='PINK', Shell=True)
+

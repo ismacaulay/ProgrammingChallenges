@@ -3,12 +3,12 @@ from waflib.TaskGen import before, after, feature
 from waflib import Options, Task, Utils, Logs, Errors
 
 def options(opt):
-   opt.add_option('--notest', action = 'store_true', default = False, help = 'Dont run tests')
+   pass
 
 @feature('programrunner')
 @before('process_rule')
 def remove_tests(self):
-   if Options.options.notest:
+   if not Options.options.test and not Options.options.submission:
       self.meths[:] = []
 
 @feature('programrunner')
@@ -33,7 +33,7 @@ class run_test(Task.Task):
       if status != Task.SKIP_ME:
          return status
 
-      if Options.options.notest:
+      if not Options.options.test:
          return status
 
       return Task.RUN_ME
