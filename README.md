@@ -6,14 +6,13 @@ These solved solutions of programming challenges presented in Programming Challe
 Each problem is unit tested using the google-test framework. The input.txt and output.txt files for each problem are the example inputs and ouputs. The submission build will verify that the output matches that of the expected output.
 
 ###Building and Running
-Todo
+Todo - Fill this in!
 
 ###Submitting to judges
-Todo
+Todo - Fill this in!
 
 ###Solved Problems
-<ul>
-<li>100 - 3n+1 Problem</li>
-<li>10189 - Minesweeper</li>
-<li>10038 - Jolly Jumpers</li>
-</ul>
+* 100 - 3n+1 Problem
+* 10189 - Minesweeper
+* 10038 - Jolly Jumpers
+* 10010 - Where's Waldorf?
