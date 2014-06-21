@@ -4,7 +4,7 @@ out = '.build'
 
 def options(opt):
    opt.add_option('-s', '--submission', action='store_true', default=False, help='Run submission')
-   opt.add_option('-t', '--test', action='store_true', default=False, help='Run tests')
+   opt.add_option('--notests', action='store_true', default=False, help='Skip tests')
    opt.load('compiler_cxx programrunner')
 
 def configure(conf):
