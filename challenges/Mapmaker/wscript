@@ -1,0 +1,16 @@
+
+def build(bld):
+   defines = ''
+   features = []
+   if bld.options.submission:
+      defines = 'ONLINE_JUDGE'
+
+   bld.program(features = 'cxx programrunner',
+				   use = 'gtest',
+               uselib = 'pthread',
+				   include = ['.'],
+				   source = bld.path.ant_glob('*.cxx'),
+				   defines = defines,
+				   target = 'Mapmaker')
+
+
