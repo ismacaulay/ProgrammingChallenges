@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+
+import sys
+import os
+
+name = None
+
+def processArgs():
+   global name
+
+   if len(sys.argv) != 2:
+      printUsage()
+
+   if sys.argv[1] == '-h' or sys.argv[1] == '--help':
+      printUsage()
+   
+   if os.environ['CHALLENGES'] != os.getcwd():
+      printUsage()
+
+   name = sys.argv[1]
+
+def makeDirectory():
+   os.mkdir(name, 0666)
+   os.chdir(name)
+
+def makeSampleFiles():
+   f = open('input.txt', 'w')
+   f.close()
+   f = open('output.txt', 'w')
+   f.close()
+   
+
+def makeSourceFile():
+   filedata = '''\
+#include <iostream>
+
+using namespace std;
+
+#ifdef ONLINE_JUDGE
+int main()
+{
+   return 0;
+}
+#endif
+'''
+   
+   f = open(name + '.h', 'w');
+   f.write(filedata)
+   f.close()
+
+def makeTestFile():
+   filedata = '''\
+#include <gtest/gtest.h>
+#include <''' + name + '''.h>
+
+TEST(Test''' + name + ''', testName)
+{
+   
+}
+
+'''
+
+   f = open('Test' + name + '.cxx', 'w')
+   f.write(filedata)
+   f.close()
+
+def makeWscript():
+   filedata = '''\
+def build(bld):
+   defines = ''
+   features = []
+   if bld.options.submission:
+      defines = 'ONLINE_JUDGE'
+
+   bld.program(features = 'cxx programrunner',
+               use = 'gtest',
+               uselib = 'pthread',
+               include = ['.'],
+               source = bld.path.ant_glob('*.cxx'),
+               defines = defines,
+               target = \'''' + name +'''\')
+
+'''
+   f = open('wscript', 'w')
+   f.write(filedata)
+   f.close()
+
+def printUsage():
+   sys.exit()
+
+if __name__ == "__main__":
+   processArgs()
+   makeDirectory()
+   makeSampleFiles()
+   makeSourceFile()
+   makeTestFile()
+   makeWscript()

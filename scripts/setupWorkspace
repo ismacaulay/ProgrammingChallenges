@@ -1,0 +1,28 @@
+#!/usr/bin/python
+
+import os
+import sys
+
+cwd = os.getcwd()
+if not cwd.endswith('/scripts'):
+   print "Error: Must run from scripts directory"
+   sys.exit(0)
+
+workspace = cwd.split('/scripts')[0]
+build = workspace + '/build'
+scripts = cwd
+challenges = workspace + '/challenges'
+
+environmentFileData = '''\
+#!/bin/bash
+
+export WS=''' + workspace + '''
+export PATH=''' + build + ''':$PATH
+export PATH=''' + scripts + ''':$PATH
+export CHALLENGES=''' + challenges + '''
+
+'''
+
+environmentFile = open("environment.bash", 'w')
+environmentFile.write(environmentFileData)
+environmentFile.close()

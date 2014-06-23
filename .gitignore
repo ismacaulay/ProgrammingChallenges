@@ -24,3 +24,4 @@
 *.build*
 build/.waf*
 *.pyc
+environment.bash
