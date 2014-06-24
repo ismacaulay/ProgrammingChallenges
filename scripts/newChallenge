@@ -31,7 +31,7 @@ def makeSampleFiles():
    
 
 def makeSourceFile():
-   filedata = '''\
+   filedata = '''
 #include <iostream>
 
 using namespace std;
@@ -43,15 +43,14 @@ int main()
 }
 #endif
 '''
-   
    f = open(name + '.h', 'w');
    f.write(filedata)
    f.close()
 
 def makeTestFile():
-   filedata = '''\
+   filedata = '''
 #include <gtest/gtest.h>
-#include <''' + name + '''.h>
+#include "''' + name + '''.h"
 
 TEST(Test''' + name + ''', testName)
 {
@@ -65,7 +64,7 @@ TEST(Test''' + name + ''', testName)
    f.close()
 
 def makeWscript():
-   filedata = '''\
+   filedata = '''
 def build(bld):
    defines = ''
    features = []
