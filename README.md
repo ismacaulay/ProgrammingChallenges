@@ -13,6 +13,7 @@ Each problem is unit tested (unless the problem was too easy and didnt warrent t
 
 ###Solved Problems
 * 100 - 3n+1 Problem
+* 101 - The Blocks Problem
 * 394 - Mapmaker
 * 10010 - Where's Waldorf?
 * 10038 - Jolly Jumpers
