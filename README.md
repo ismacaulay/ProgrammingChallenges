@@ -20,7 +20,7 @@ Each problem is unit tested (unless the problem was too easy and didnt warrent t
 * 10189 - Minesweeper
 * 11172 - Relational Operator
 * 11340 - Newspaper
-
+* 11498 - Division of Nlogonia
 
 ###Submission Errors
 Submission Errors look correct but the UVa Online Judge has problems when submitting the solution. It is unknown if the solution would be Accepted.
