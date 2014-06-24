@@ -18,6 +18,7 @@ Each problem is unit tested (unless the problem was too easy and didnt warrent t
 * 10010 - Where's Waldorf?
 * 10038 - Jolly Jumpers
 * 10189 - Minesweeper
+* 11172 - Relational Operator
 * 11340 - Newspaper
 
 
