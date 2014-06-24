@@ -12,18 +12,7 @@ Each problem is unit tested (unless the problem was too easy and didnt warrent t
 * libpthread (for gtest)
 
 ###Solved Problems
-* 100 - 3n+1 Problem
-* 101 - The Blocks Problem
-* 394 - Mapmaker
-* 10010 - Where's Waldorf?
-* 10038 - Jolly Jumpers
-* 10189 - Minesweeper
-* 11172 - Relational Operator
-* 11340 - Newspaper
-* 11498 - Division of Nlogonia
-* 11727 - Cost Cutting
+See [Solved Problems](https://github.com/ismacaulay/ProgrammingChallenges/wiki/Solved-Problems)
 
 ###Submission Errors
-Submission Errors look correct but the UVa Online Judge has problems when submitting the solution. It is unknown if the solution would be Accepted.
-
-* 661 - Blowing Fuses
+See [Submission Errors](https://github.com/ismacaulay/ProgrammingChallenges/wiki/Submission-Errors)
