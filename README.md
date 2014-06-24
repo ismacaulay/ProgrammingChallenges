@@ -12,7 +12,7 @@ Each problem is unit tested (unless the problem was too easy and didnt warrent t
 * libpthread (for gtest)
 
 ###Solved Problems
-See [Solved Problems](https://github.com/ismacaulay/ProgrammingChallenges/wiki/Solved-Problems)
+See [Solved Problems](https://github.com/ismacaulay/ProgrammingChallenges/blob/master/SOLVED.md)
 
 ###Submission Errors
-See [Submission Errors](https://github.com/ismacaulay/ProgrammingChallenges/wiki/Submission-Errors)
+See [Submission Errors](https://github.com/ismacaulay/ProgrammingChallenges/blob/master/SUBMISSION_ERRORS.md)
