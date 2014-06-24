@@ -21,6 +21,7 @@ Each problem is unit tested (unless the problem was too easy and didnt warrent t
 * 11172 - Relational Operator
 * 11340 - Newspaper
 * 11498 - Division of Nlogonia
+* 11727 - Cost Cutting
 
 ###Submission Errors
 Submission Errors look correct but the UVa Online Judge has problems when submitting the solution. It is unknown if the solution would be Accepted.
