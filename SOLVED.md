@@ -15,3 +15,4 @@ Problems accepted by the UVa Online Judge using the C++11 Compiler
 * 11498 - Division of Nlogonia
 * 11559 - Event Planning
 * 11727 - Cost Cutting
+* 11799 - Horror Dash
