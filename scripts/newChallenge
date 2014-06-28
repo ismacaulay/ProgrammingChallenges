@@ -26,8 +26,8 @@ def makeDirectory():
 def makeSampleFiles():
    f = open('input.txt', 'w')
    f.close()
-   f = open('output.txt', 'w')
-   f.close()
+   # f = open('output.txt', 'w')
+   # f.close()
    
 
 def makeSourceFile():
