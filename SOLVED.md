@@ -6,6 +6,7 @@ Problems accepted by the UVa Online Judge using the C++11 Compiler
 * 100 - 3n+1 Problem
 * 101 - The Blocks Problem
 * 394 - Mapmaker
+* 573 - The Snail
 * 10010 - Where's Waldorf?
 * 10038 - Jolly Jumpers
 * 10114 - Loansome Car Buyer
