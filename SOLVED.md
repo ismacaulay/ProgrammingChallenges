@@ -10,6 +10,7 @@ Problems accepted by the UVa Online Judge using the C++11 Compiler
 * 10010 - Where's Waldorf?
 * 10038 - Jolly Jumpers
 * 10114 - Loansome Car Buyer
+* 10141 - Request For Proposal
 * 10189 - Minesweeper
 * 11172 - Relational Operator
 * 11340 - Newspaper
