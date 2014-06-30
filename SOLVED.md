@@ -21,3 +21,4 @@ Problems accepted by the UVa Online Judge using the C++11 Compiler
 * 11559 - Event Planning
 * 11727 - Cost Cutting
 * 11799 - Horror Dash
+* 12247 - Jollo
