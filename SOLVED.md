@@ -13,6 +13,7 @@ Problems accepted by the UVa Online Judge using the C++11 Compiler
 * 10114 - Loansome Car Buyer
 * 10141 - Request For Proposal
 * 10189 - Minesweeper
+* 10646 - What is the Card?
 * 11172 - Relational Operator
 * 11340 - Newspaper
 * 11498 - Division of Nlogonia
