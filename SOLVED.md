@@ -9,6 +9,7 @@ Problems accepted by the UVa Online Judge using the C++11 Compiler
 * 462 - Bridge Hand Evaluator
 * 489 - Hangman Judge
 * 573 - The Snail
+* 584 - Bowling
 * 10010 - Where's Waldorf?
 * 10038 - Jolly Jumpers
 * 10114 - Loansome Car Buyer
